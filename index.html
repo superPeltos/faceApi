@@ -17,9 +17,13 @@
         justify-content: center;
         align-items: center;
     }
+    canvas{
+        position: absolute;
+    }
 </style>
 <body>
-<video src="video" width="720" height="560" autoplay muted></video>
+<video id="video" width="720" height="560" autoplay muted></video>
 </body>
+<script src="node_modules/face-api.js/dist/face-api.min.js"></script>
 <script src="script.js"></script>
 </html>
