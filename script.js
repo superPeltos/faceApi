@@ -26,14 +26,10 @@ video.addEventListener('play', () => {
 
     if (detections[0].expressions !== undefined) {
       let expressions = detections[0].expressions;
-      let getHighScoreExpression = Object.keys(expressions).map((key) => {
-        return expressions[key]
-      });
-      //console.log(getHighScoreExpression);
-      let max = Math.max.apply(null, getHighScoreExpression);
-      let getHighScoreExpressionName = Object.keys(expressions).find(key => expressions[key] === max);
-      console.log(getHighScoreExpressionName)
-      //console.log(max);
+      let getHeighScoreExpressionName = Object.keys(expressions).reduce((max,expression) => {
+        return( expressions[max] > expressions[expression] ? max : expression)
+      },{});
+      console.log(getHeighScoreExpressionName)
     }
     const resizedDetections = faceapi.resizeResults(detections, displaySize);
     canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
@@ -42,4 +38,4 @@ video.addEventListener('play', () => {
     faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
 
   }, 100)
-})
+});
