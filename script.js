@@ -26,10 +26,10 @@ video.addEventListener('play', () => {
 
     if (detections[0].expressions !== undefined) {
       let expressions = detections[0].expressions;
-      let getHeighScoreExpressionName = Object.keys(expressions).reduce((max,expression) => {
+      let getHighScoreExpressionName = Object.keys(expressions).reduce((max,expression) => {
         return( expressions[max] > expressions[expression] ? max : expression)
       },{});
-      console.log(getHeighScoreExpressionName)
+      console.log(getHighScoreExpressionName)
     }
     const resizedDetections = faceapi.resizeResults(detections, displaySize);
     canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
